@@ -1,10 +1,24 @@
 package prac_2468;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class Main {
+	static int N;
+	static int[][] map;
+	static boolean[][] visited;
+	static int[] dx = { 0, 0, -1, 1 };
+	static int[] dy = { -1, 1, 0, 0 };
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] input = br.readLine().split(" ");
 
+		N = Integer.parseInt(input[0]);
+
+		br.close();
 	}
 
 }
