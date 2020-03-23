@@ -17,6 +17,13 @@ public class Main {
 		String[] input = br.readLine().split(" ");
 
 		N = Integer.parseInt(input[0]);
+		map = new int[N][N];
+		for (int i = 0; i < N; i++) {
+			input = br.readLine().split(" ");
+			for (int j = 0; j < N; j++) {
+				map[i][j] = Integer.parseInt(input[j]);
+			}
+		}
 
 		br.close();
 	}
