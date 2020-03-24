@@ -23,7 +23,7 @@ public class Main {
 			input = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(input[j]);
-				if(highest < map[i][j])
+				if (highest < map[i][j])
 					highest = map[i][j];
 			}
 		}
@@ -31,4 +31,10 @@ public class Main {
 		br.close();
 	}
 
+	public static void dfs() {
+		
+		for (int i = 0; i < N; i++) {
+			
+		}
+	}
 }
