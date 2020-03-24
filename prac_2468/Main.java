@@ -15,6 +15,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String[] input = br.readLine().split(" ");
+		int highest = 0;
 
 		N = Integer.parseInt(input[0]);
 		map = new int[N][N];
@@ -22,6 +23,8 @@ public class Main {
 			input = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(input[j]);
+				if(highest < map[i][j])
+					highest = map[i][j];
 			}
 		}
 
