@@ -3,6 +3,7 @@ package prac_2583;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.TreeSet;
 
 public class Main {
 	static int M, N, K;
@@ -10,6 +11,8 @@ public class Main {
 	static boolean[][] vistied;
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { -1, 1, 0, 0 };
+	static int cnt; // 나누어 지는 영역의 개수
+	static int width; // 영역의 넓이
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
