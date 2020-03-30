@@ -3,6 +3,8 @@ package prac_2583;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.TreeSet;
 
 public class Main {
@@ -56,7 +58,9 @@ public class Main {
 	}
 
 	static void bfs(int y, int x) {
+		Queue<Integer> q = new LinkedList<>();
 		
+		q.add(e);
 	}
 
 	static void print(int[][] map) {
