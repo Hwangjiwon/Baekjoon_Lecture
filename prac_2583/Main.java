@@ -54,11 +54,6 @@ public class Main {
 		}
 
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
-		/*
-		 * 우선순위가 높은 것 먼저 출력 
-		 * [reverse]
-		 * PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
-		 */
 
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
