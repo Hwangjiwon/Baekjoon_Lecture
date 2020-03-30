@@ -4,13 +4,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.TreeSet;
+
+class Dot {
+	int y, x;
+
+	Dot(int y, int x) {
+		this.y = y;
+		this.x = x;
+	}
+}
 
 public class Main {
 	static int M, N, K;
 	static int[][] map;
-	static boolean[][] vistied;
+	static boolean[][] visited;
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { -1, 1, 0, 0 };
 	static int cnt; // 나누어 지는 영역의 개수
@@ -26,7 +36,7 @@ public class Main {
 		K = Integer.parseInt(input[2]);
 
 		map = new int[N][M];
-		vistied = new boolean[N][M];
+		visited = new boolean[N][M];
 		for (int i = 0; i < K; i++) {
 			input = br.readLine().split(" ");
 
@@ -43,24 +53,55 @@ public class Main {
 			}
 		}
 
+		PriorityQueue<Integer> pq = new PriorityQueue<>();
+
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < M; j++) {
 				width = 0;
-				if (map[i][j] == 0) {
-					cnt++;
+				if (map[i][j] == 0 && visited[i][j] == false) {
 					bfs(i, j);
+					pq.add(width);
+					cnt++;
 				}
 			}
 		}
 
-		print(map);
+		// print(map);
+
+		System.out.println(cnt);
+		while (!pq.isEmpty())
+			System.out.print(pq.poll() + " ");
+
 		br.close();
 	}
 
 	static void bfs(int y, int x) {
-		Queue<Integer> q = new LinkedList<>();
-		
-		q.add(e);
+		Queue<Dot> q = new LinkedList<>();
+		q.add(new Dot(y, x));
+		visited[y][x] = true;
+
+		while (!q.isEmpty()) {
+			Dot dot = q.poll();
+			int cx = dot.x;
+			int cy = dot.y;
+			width++;
+
+			for (int i = 0; i < 4; i++) {
+				int nx = cx + dx[i];
+				int ny = cy + dy[i];
+
+				if (nx < 0 || ny < 0 || nx >= M || ny >= N)
+					continue;
+				if (visited[ny][nx] == true)
+					continue;
+
+				if (map[ny][nx] == 0) {
+					q.add(new Dot(ny, nx));
+					visited[ny][nx] = true;
+				}
+			}
+		}
+
 	}
 
 	static void print(int[][] map) {
