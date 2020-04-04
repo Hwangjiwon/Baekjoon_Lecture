@@ -11,10 +11,13 @@ public class Main {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String[] input = br.readLine().split(" ");
-		N = Integer.parseInt(input[0]);
-		M = Integer.parseInt(input[1]);
-		
-		
+		N = Integer.parseInt(input[0]); // 행
+		M = Integer.parseInt(input[1]); // 열
+
+		for (int i = 0; i < N; i++) {
+
+		}
+
 		br.close();
 	}
 
