@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 
 public class Main {
 	static int N, M;
+	static String[][] map;
+	static int[] dx = { 0, 0, -1, 1 };
+	static int[] dy = { -1, 1, 0, 0 };
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
