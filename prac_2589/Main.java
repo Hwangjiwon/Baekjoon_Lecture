@@ -4,6 +4,17 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.graalvm.compiler.nodes.java.ArrayLengthNode;
+
+class Dot {
+	int x, y;
+
+	Dot(int y, int x) {
+		this.y = y;
+		this.x = x;
+	}
+}
+
 public class Main {
 	static int N, M;
 	static char[][] map;
@@ -21,7 +32,7 @@ public class Main {
 		M = Integer.parseInt(input[1]); // 열
 
 		for (int i = 0; i < N; i++) {
-			
+
 		}
 
 		br.close();
