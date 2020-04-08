@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import org.graalvm.compiler.nodes.java.ArrayLengthNode;
 
 class Dot {
 	int x, y;
