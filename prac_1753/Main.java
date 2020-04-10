@@ -88,7 +88,7 @@ public class Main {
 	}
 
 	public static void dijkstra(int start) {
-		PriorityQueue<Node> pq = new PriorityQueue<>();
+		PriorityQueue<Node> pq = new PriorityQueue<Node>();
 		pq.add(new Node(start, 0));
 		distance[start] = 0;
 
