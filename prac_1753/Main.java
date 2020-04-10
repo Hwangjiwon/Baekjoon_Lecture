@@ -33,6 +33,7 @@ class Node implements Comparable<Node> {
 		this.value = value;
 	}
 
+	//우선순위 큐에 삽입될때 정렬할 기준을 가준치로 정해주는 것이다.
 	@Override
 	public int compareTo(Node o) {
 		// TODO Auto-generated method stub
@@ -53,8 +54,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
+		
 		String[] input = br.readLine().split(" ");
 		V = Integer.parseInt(input[0]);
 		E = Integer.parseInt(input[1]);
@@ -83,7 +83,7 @@ public class Main {
 			else
 				sb.append(distance[i] + "\n");
 		}
-		bw.write(sb.toString());
+		System.out.println(sb.toString());
 		br.close();
 	}
 
