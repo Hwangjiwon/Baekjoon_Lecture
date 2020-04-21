@@ -17,17 +17,15 @@ public class Main {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-		String[] input = br.readLine().split(" ");
 
+		String[] input = br.readLine().split(" ");
 		N = Integer.parseInt(input[0]);
 		M = Integer.parseInt(input[1]);
 
-		graph = new ArrayList<ArrayList<Integer>>();
-		for (int i = 0; i < M; i++) {
+		graph = new ArrayList<>();
+		for (int i = 0; i <= N; i++) {
 			graph.add(new ArrayList<Integer>());
 		}
-
-		visited = new boolean[N + 1];
 
 		for (int i = 0; i < M; i++) {
 			input = br.readLine().split(" ");
@@ -38,27 +36,27 @@ public class Main {
 			graph.get(v).add(u);
 		}
 
-		cnt = 0;
-		for (int i = 0; i < N; i++) {
+		visited = new boolean[N + 1];
+		for (int i = 1; i <= N; i++) {
 			if (!visited[i]) {
 				dfs(i);
 				cnt++;
 			}
 		}
 
-		bw.write(cnt);
+		bw.write(cnt + "\n");
+		bw.flush();
 		bw.close();
 		br.close();
 	}
 
-	public static void dfs(int v) {
-		visited[v] = true;
+	public static void dfs(int idx) {
+		visited[idx] = true;
 
-		for (int u = 0; u < graph.get(v).size(); u++) {
-
-			if (!visited[graph.get(v).get(u)]) {
-				dfs(u);
-			}
+		for (int i : graph.get(idx)) {
+			if (!visited[i])
+				dfs(i);
 		}
 	}
+
 }
