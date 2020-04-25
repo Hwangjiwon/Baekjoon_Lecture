@@ -3,17 +3,18 @@ package prac_2468;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
-/* ¾ÈÀü ¿µ¿ª
+/* ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  * 
- * Çà°ú ¿­ N(2~100)
- * ³ôÀÌ´Â 1~100
+ * ï¿½ï¿½ï¿½ ï¿½ï¿½ N(2~100)
+ * ï¿½ï¿½ï¿½Ì´ï¿½ 1~100
  * 
- * ¹°¿¡ Àá±âÁö ¾Ê´Â ÃÖ´ë °³¼ö
- * 1¸¸Å­ Àá±æ¶§ ¾ÈÀü¿µ¿ª °³¼ö
- * 2¸¸Å­ Àá±æ¶§ ¾ÈÀü¿µ¿ª °³¼ö
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+ * 1ï¿½ï¿½Å­ ï¿½ï¿½æ¶§ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ * 2ï¿½ï¿½Å­ ï¿½ï¿½æ¶§ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  * ... 
- * ÃÖ´ë ³ôÀÌ-1¸¸Å­ Àá±æ¶§ ¾ÈÀü¿µ¿ª °³¼ö
+ * ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½-1ï¿½ï¿½Å­ ï¿½ï¿½æ¶§ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
  */
 public class Main {
 	static int N;
@@ -21,6 +22,8 @@ public class Main {
 	static boolean[][] visited;
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { -1, 1, 0, 0 };
+	static int max;
+	static int result = 1;
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -35,10 +38,46 @@ public class Main {
 			input = br.readLine().split(" ");
 			for (int j = 0; j < N; j++) {
 				map[i][j] = Integer.parseInt(input[j]);
+				max = Math.max(max, map[i][j]);
 			}
 		}
+
+		for (int i = 0; i < max; i++) {
+			for (int j = 0; j < N; j++)
+				Arrays.fill(visited[j], false);
+			int cnt = 0;
+
+			for (int y = 0; y < N; y++) {
+				for (int x = 0; x < N; x++) {
+					if (map[y][x] > i && !visited[y][x]) {
+						cnt++;
+						dfs(i, y, x);
+					}
+				}
+			}
+			result = Math.max(result, cnt);
+		}
+
+		System.out.println(result);
 
 		br.close();
 	}
 
+	public static void dfs(int hight, int y, int x) {
+		if (x < 0 || y < 0 || x >= N || y >= N)
+			return;
+
+		if (visited[y][x] || map[y][x] <= hight)
+			return;
+
+		visited[y][x] = true;
+
+		for (int i = 0; i < 4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+
+			dfs(hight, ny, nx);
+		}
+
+	}
 }
