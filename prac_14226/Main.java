@@ -16,14 +16,16 @@ import java.io.InputStreamReader;
 
 public class Main {
 	static int S;
+	static int time;
 	
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		S = Integer.parseInt(br.readLine());
 		
-		
+		System.out.println(time);
 		br.close();
 	}
 
+	
 }
