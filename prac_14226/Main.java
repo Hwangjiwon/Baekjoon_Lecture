@@ -14,6 +14,15 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+class Node {
+	int cnt, clip;
+	
+	Node(int cnt, int clip){
+		this.cnt = cnt;
+		this.clip = clip;
+	}
+}
+
 public class Main {
 	static int S;
 	static int time;
