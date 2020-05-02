@@ -3,18 +3,32 @@ package prac_2206;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*
  * 벽 부수고 이동하기
  * 
  * 1,1 -> N, M
  * 최단경로 ==> bfs
- * 1개의 벽 뚫기 가능
+ * 1개의 벽 뚫기 가능 ==> 뚫고가기, 안뚫고가기 나눠서 품
  * 
  * N ==> y, 세로
  * M ==> x, 가로
+ * Dot(y,x,cnt,drill)
  * 
  */
+
+class Dot {
+	int y, x, cnt, drill;
+
+	Dot(int y, int x, int cnt, int drill) {
+		this.y = y;
+		this.x = x;
+		this.cnt = cnt;
+		this.drill = drill;
+	}
+}
 
 public class Main {
 	static int N, M;
@@ -49,6 +63,7 @@ public class Main {
 	}
 
 	public static void bfs() {
-
+		Queue<Dot> q = new LinkedList<>();
+		q.add(new Dot(1, 1));
 	}
 }
