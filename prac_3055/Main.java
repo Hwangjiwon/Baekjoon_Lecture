@@ -3,6 +3,8 @@ package prac_3055;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /*
  * R행 C열 
@@ -15,12 +17,25 @@ import java.io.InputStreamReader;
  * 
  */
 
+class Dot {
+	int y, x;
+
+	Dot(int y, int x) {
+		this.y = y;
+		this.x = x;
+	}
+}
+
 public class Main {
 	static int R, C;
 	static char[][] map;
-	static boolean[][] visited;
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { -1, 1, 0, 0 };
+
+	static Queue<Dot> dochi = new LinkedList<>();
+	static Queue<Dot> water = new LinkedList<>();
+
+	static int result = Integer.MAX_VALUE;
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -30,17 +45,24 @@ public class Main {
 		C = Integer.parseInt(input[1]);
 
 		map = new char[R][C];
-		visited = new boolean[R][C];
 		for (int i = 0; i < R; i++) {
 			input = br.readLine().split("");
 			for (int j = 0; j < C; j++) {
 				map[i][j] = input[j].charAt(0);
-				if(map[i][j] == 'D') {
-					
-				}
+				if (map[i][j] == 'S')
+					dochi.add(new Dot(i, j));
+				if (map[i][j] == '*')
+					water.add(new Dot(i, j));
 			}
 		}
+
+		bfs();
+		System.out.println(result);
+		
 		br.close();
 	}
 
+	public static void bfs() {
+		
+	}
 }
