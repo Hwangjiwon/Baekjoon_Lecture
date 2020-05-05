@@ -35,7 +35,7 @@ public class Main {
 	static Queue<Dot> dochi = new LinkedList<>();
 	static Queue<Dot> water = new LinkedList<>();
 
-	static int result = Integer.MAX_VALUE;
+	static int result;
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -56,13 +56,69 @@ public class Main {
 			}
 		}
 
-		bfs();
-		System.out.println(result);
-		
-		br.close();
+		while (true) {
+			result++;
+			if (dochi.size() == 0) {
+				System.out.println("KAKTUS");
+				return;
+			}
+
+			extendWater();
+			if (bfs() == true) {
+				System.out.println(result);
+				return;
+			}
+		}
+
 	}
 
-	public static void bfs() {
-		
+	public static void extendWater() {
+		int size = water.size();
+
+		for (int k = 0; k < size; k++) {
+			Dot d = water.poll();
+			int px = d.x;
+			int py = d.y;
+
+			for (int i = 0; i < 4; i++) {
+				int nx = px + dx[i];
+				int ny = py + dy[i];
+
+				if (nx < 0 || ny < 0 || nx >= C || ny >= R)
+					continue;
+
+				if (map[ny][nx] == '.') {
+					map[ny][nx] = '*';
+					water.add(new Dot(ny, nx));
+				}
+			}
+		}
+	}
+
+	public static boolean bfs() {
+		int size = dochi.size();
+
+		for (int k = 0; k < size; k++) {
+			Dot d = dochi.poll();
+			int px = d.x;
+			int py = d.y;
+
+			for (int i = 0; i < 4; i++) {
+				int nx = px + dx[i];
+				int ny = py + dy[i];
+
+				if (nx < 0 || ny < 0 || nx >= C || ny >= R)
+					continue;
+
+				if (map[ny][nx] == 'D')
+					return true;
+
+				if (map[ny][nx] == '.') {
+					map[ny][nx] = 'S';
+					dochi.add(new Dot(ny, nx));
+				}
+			}
+		}
+		return false;
 	}
 }
