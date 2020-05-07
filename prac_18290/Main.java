@@ -16,6 +16,8 @@ import java.io.InputStreamReader;
 public class Main {
 	static int N, M, K;
 	static int[][] map;
+	static boolean[][] visited;
+	static int max = Integer.MIN_VALUE;
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -35,7 +37,20 @@ public class Main {
 			}
 		}
 
+		for (int i = 0; i < M; i++) {
+			for (int j = 0; j < N; j++) {
+				dfs(i, j, 0, 0);
+			}
+		}
 		br.close();
 	}
 
+	public static void dfs(int y, int x, int cnt, int sum) {
+		if (cnt == K) {
+			System.out.println(sum);
+			return;
+		}
+
+		
+	}
 }
