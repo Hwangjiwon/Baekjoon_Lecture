@@ -1,5 +1,9 @@
 package prac_18290;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /*
  * NM과 K(1)
  * 
@@ -9,12 +13,29 @@ package prac_18290;
  * 
  */
 
-
 public class Main {
-	
-	public static void main(String[] args) {
+	static int N, M, K;
+	static int[][] map;
+
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] input = br.readLine().split(" ");
+
+		N = Integer.parseInt(input[0]);
+		M = Integer.parseInt(input[1]);
+		K = Integer.parseInt(input[2]);
+
+		map = new int[M][N];
+
+		for (int i = 0; i < M; i++) {
+			input = br.readLine().split(" ");
+			for (int j = 0; j < N; j++) {
+				map[i][j] = Integer.parseInt(input[j]);
+			}
+		}
+
+		br.close();
 	}
 
 }
