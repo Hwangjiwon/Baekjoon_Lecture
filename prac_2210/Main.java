@@ -3,6 +3,8 @@ package prac_2210;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
 
 /*
  * 숫자판 점프
@@ -19,29 +21,45 @@ public class Main {
 	static int[][] map;
 	static int[] dx = { 0, 0, -1, 1 };
 	static int[] dy = { -1, 1, 0, 0 };
+	static Set<String> result = new HashSet<>();
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] input = br.readLine().split(" ");
+		String[] input;
 
 		map = new int[5][5];
 		for (int i = 0; i < 5; i++) {
-			for (int j = 0; j < 5; j++) {
+			input = br.readLine().split(" ");
+			for(int j = 0; j < 5; j++) {
 				map[i][j] = Integer.parseInt(input[j]);
 			}
 		}
 
 		for (int i = 0; i < 5; i++) {
 			for (int j = 0; j < 5; j++) {
-				sol(i, j);
+				sol(i, j, 0, map[i][j]+"");
 			}
 		}
 
+		System.out.println(result.size());
 		br.close();
 	}
 
-	public static void sol(int y, int x) {
+	public static void sol(int y, int x, int cnt, String str) {
+		if (cnt == 6) {
+			result.add(str);
+			return;
+		}
 
+		for (int i = 0; i < 4; i++) {
+			int nx = x + dx[i];
+			int ny = y + dy[i];
+
+			if (nx < 0 || ny < 0 || nx >= 5 || ny >= 5)
+				continue;
+
+			sol(ny, nx, cnt + 1, str + map[y][x] + "");
+		}
 	}
 }
